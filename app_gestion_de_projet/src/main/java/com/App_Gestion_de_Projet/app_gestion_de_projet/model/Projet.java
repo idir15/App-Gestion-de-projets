@@ -12,6 +12,8 @@ public class Projet {
     private Integer id;
     @Column(name ="name")
     private String name;
+
+    private String description;
     @Column(name = "date_Debut")
     private LocalDate dateDebut;
     @Column(name = "date_Fin")
@@ -26,6 +28,7 @@ public class Projet {
 
     public Integer getId() {
         return id;
+
     }
 
     public void setId(Integer id) {
