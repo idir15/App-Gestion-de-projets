@@ -13,15 +13,17 @@ public class Projet {
     @Column(name ="name")
     private String name;
 
+    @Column(name ="description")
     private String description;
     @Column(name = "date_Debut")
     private LocalDate dateDebut;
     @Column(name = "date_Fin")
     private LocalDate dateFin;
 
-    public Projet(Integer id, String name, LocalDate dateDebut, LocalDate dateFin) {
+    public Projet(Integer id, String name,String description,  LocalDate dateDebut, LocalDate dateFin) {
         this.id = id;
         this.name = name;
+        this.description = description;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
     }
@@ -59,11 +61,20 @@ public class Projet {
         this.dateFin = dateFin;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Projet{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
                 '}';
