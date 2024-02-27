@@ -5,30 +5,34 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-public class Projet {
+public class Tache {
     @Id
     private UUID id;
 
-    @Column(name ="name")
-    private String name;
+    @Column(name ="nom")
+    private String nom;
 
     private String description;
 
-    @Column(name = "date_Debut")
+    @Column(name = "date_debut")
     private LocalDate dateDebut;
 
-    @Column(name = "date_Fin")
+    @Column(name = "date_fin")
     private LocalDate dateFin;
+
+    private String etat;
 
     @ManyToOne
     @JoinColumn(name = "id_personne")
     private Personne personne;
 
-    public Projet(String name, LocalDate dateDebut, LocalDate dateFin, Personne personne) {
-        this.id = UUID.randomUUID(); // Génération automatique d'un UUID lors de la création d'un nouveau projet
-        this.name = name;
+    public Tache(String nom, String description, LocalDate dateDebut, LocalDate dateFin, String etat, Personne personne) {
+        this.id = UUID.randomUUID(); // Génération automatique d'un UUID lors de la création d'une nouvelle tâche
+        this.nom = nom;
+        this.description = description;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+        this.etat = etat;
         this.personne = personne;
     }
 
@@ -40,12 +44,20 @@ public class Projet {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNom() {
+        return nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDate getDateDebut() {
@@ -64,6 +76,14 @@ public class Projet {
         this.dateFin = dateFin;
     }
 
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
     public Personne getPersonne() {
         return personne;
     }
@@ -74,11 +94,13 @@ public class Projet {
 
     @Override
     public String toString() {
-        return "Projet{" +
+        return "Tache{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", nom='" + nom + '\'' +
+                ", description='" + description + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
+                ", etat='" + etat + '\'' +
                 ", personne=" + personne +
                 '}';
     }
