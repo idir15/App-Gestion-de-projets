@@ -10,8 +10,8 @@ import java.time.LocalDate;
 public class Projet {
     @Id
     private Integer id;
-    @Column(name ="name")
-    private String name;
+    @Column(name ="nom")
+    private String nom;
 
     @Column(name ="description")
     private String description;
@@ -20,9 +20,11 @@ public class Projet {
     @Column(name = "date_Fin")
     private LocalDate dateFin;
 
-    public Projet(Integer id, String name,String description,  LocalDate dateDebut, LocalDate dateFin) {
+    public Projet() {
+    }
+    public Projet(Integer id, String nom,String description,  LocalDate dateDebut, LocalDate dateFin) {
         this.id = id;
-        this.name = name;
+        this.nom = nom;
         this.description = description;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -38,11 +40,11 @@ public class Projet {
     }
 
     public String getName() {
-        return name;
+        return nom;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nom = name;
     }
 
     public LocalDate getDateDebut() {
@@ -73,7 +75,7 @@ public class Projet {
     public String toString() {
         return "Projet{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + nom + '\'' +
                 ", description='" + description + '\'' +
                 ", dateDebut=" + dateDebut +
                 ", dateFin=" + dateFin +
