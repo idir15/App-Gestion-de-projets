@@ -5,45 +5,29 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-public class Projet {
+public class Project {
     @Id
-<<<<<<< HEAD
     private UUID id;
 
     @Column(name ="name")
     private String name;
-=======
-    private Integer id;
-    @Column(name ="nom")
-    private String nom;
->>>>>>> testbranch
 
     private String description;
 
     @Column(name = "date_Debut")
-    private LocalDate dateDebut;
+    private LocalDate startDate;
 
     @Column(name = "date_Fin")
-    private LocalDate dateFin;
+    private LocalDate endDate;
 
-<<<<<<< HEAD
-    @ManyToOne
-    @JoinColumn(name = "id_personne")
-    private Personne personne;
-
-    public Projet(String name, LocalDate dateDebut, LocalDate dateFin, Personne personne) {
-        this.id = UUID.randomUUID(); // Génération automatique d'un UUID lors de la création d'un nouveau projet
-        this.name = name;
-=======
-    public Projet() {
+    public Project() {
     }
-    public Projet(Integer id, String nom,String description,  LocalDate dateDebut, LocalDate dateFin) {
+    public Project(Integer id, String name,String description,  LocalDate startDate, LocalDate endDate) {
         this.id = id;
-        this.nom = nom;
+        this.name = name;
         this.description = description;
->>>>>>> testbranch
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.personne = personne;
     }
 
@@ -56,50 +40,46 @@ public class Projet {
     }
 
     public String getName() {
-        return nom;
+        return name;
     }
 
     public void setName(String name) {
-        this.nom = name;
+        this.name = name;
     }
 
-    public LocalDate getDateDebut() {
-        return dateDebut;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setDateDebut(LocalDate dateDebut) {
-        this.dateDebut = dateDebut;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
     public LocalDate getDateFin() {
-        return dateFin;
+        return endDate;
     }
 
-    public void setDateFin(LocalDate dateFin) {
-        this.dateFin = dateFin;
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
-    public Personne getPersonne() {
-        return personne;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setPersonne(Personne personne) {
-        this.personne = personne;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     @Override
     public String toString() {
-        return "Projet{" +
+        return "Project{" +
                 "id=" + id +
-<<<<<<< HEAD
                 ", name='" + name + '\'' +
-=======
-                ", name='" + nom + '\'' +
                 ", description='" + description + '\'' +
->>>>>>> testbranch
-                ", dateDebut=" + dateDebut +
-                ", dateFin=" + dateFin +
-                ", personne=" + personne +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", person=" + person +
                 '}';
     }
 }
