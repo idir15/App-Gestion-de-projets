@@ -13,6 +13,7 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
+
     public List<Project> getAllProjects() {
         return projectRepository.findAll();
     }

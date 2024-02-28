@@ -20,15 +20,17 @@ public class PersonController {
         return personService.getAllPersons();
     }
 
+
+    @GetMapping("/addperson")
     public void addPersons() {
-        Person person1 = new Person(UUID.randomUUID(), "Name1", "FirstName1");
-        Person person2 = new Person(UUID.randomUUID(), "Name2", "FirstName2");
-        Person person3 = new Person(UUID.randomUUID(), "Name3", "FirstName3");
-        Person person4 = new Person(UUID.randomUUID(), "Name4", "FirstName4");
-        Person person5 = new Person(UUID.randomUUID(), "Name5", "FirstName5");
-        Person person6 = new Person(UUID.randomUUID(), "Name6", "FirstName6");
-        Person person7 = new Person(UUID.randomUUID(), "Name7", "FirstName7");
-        Person person8 = new Person(UUID.randomUUID(), "Name8", "FirstName8");
+        Person person1 = new Person(1, "Name1", "FirstName1");
+        Person person2 = new Person(2, "Name2", "FirstName2");
+        Person person3 = new Person(3, "Name3", "FirstName3");
+        Person person4 = new Person(4, "Name4", "FirstName4");
+        Person person5 = new Person(5, "Name5", "FirstName5");
+        Person person6 = new Person(6, "Name6", "FirstName6");
+        Person person7 = new Person(7, "Name7", "FirstName7");
+        Person person8 = new Person(8, "Name8", "FirstName8");
 
         personService.addPerson(person1);
         personService.addPerson(person2);

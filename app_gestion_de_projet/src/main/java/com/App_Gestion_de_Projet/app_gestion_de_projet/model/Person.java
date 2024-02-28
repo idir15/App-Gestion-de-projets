@@ -8,7 +8,7 @@ import java.util.UUID;
 @Entity
 public class Person {
     @Id
-    private UUID id;
+    private Integer id;
 
     @Column(name ="name")
     private String name;
@@ -17,17 +17,17 @@ public class Person {
     private String firstname;
     public Person(){}
 
-    public Person(UUID id, String name, String firstname) {
+    public Person(Integer id, String name, String firstname) {
         this.id = id;
         this.name = name;
         this.firstname = firstname;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

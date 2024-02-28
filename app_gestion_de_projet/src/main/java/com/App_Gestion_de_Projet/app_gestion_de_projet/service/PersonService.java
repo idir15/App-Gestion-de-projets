@@ -6,6 +6,7 @@ import com.App_Gestion_de_Projet.app_gestion_de_projet.repository.PersonReposito
 import com.App_Gestion_de_Projet.app_gestion_de_projet.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,9 +19,12 @@ public class PersonService {
         return personRepository.findAll();
     }
 
+
     public void addPerson(Person person) {
-        personRepository.save(person);
+        try {
+            personRepository.save(person);
+        } catch (Exception e) {
+            System.out.println("addPerson ne fonctionne pas");
+        }
     }
 }
-
-
