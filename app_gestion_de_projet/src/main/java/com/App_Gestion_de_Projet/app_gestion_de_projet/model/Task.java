@@ -26,7 +26,11 @@ public class Task {
     @JoinColumn(name = "id_person")
     private Person person;
 
-    public Task(String nom, String description, LocalDate dateDebut, LocalDate dateFin, String etat, Person person) {
+    @ManyToOne
+    @JoinColumn(name = "id_project")
+    private Project project;
+
+    public Task(String name, String description, LocalDate start_date, LocalDate end_date, boolean state, Person person, Project project) {
         this.id = UUID.randomUUID(); // Génération automatique d'un UUID lors de la création d'une nouvelle tâche
         this.name = name;
         this.description = description;
@@ -34,6 +38,7 @@ public class Task {
         this.end_date = end_date;
         this.state = state;
         this.person = person;
+        this.project = project;
     }
 
     public UUID getId() {
@@ -64,7 +69,7 @@ public class Task {
         return start_date;
     }
 
-    public void setDateDebut(LocalDate start_date) {
+    public void setStart_date(LocalDate start_date) {
         this.start_date = start_date;
     }
 
@@ -80,8 +85,8 @@ public class Task {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = Boolean.valueOf(state);
+    public void setState(Boolean state) {
+        this.state = state;
     }
 
     public Person getPerson() {
@@ -92,16 +97,25 @@ public class Task {
         this.person = person;
     }
 
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
                 "id=" + id +
-                ", nom='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", dateDebut=" + start_date +
-                ", dateFin=" + end_date +
-                ", etat='" + state + '\'' +
-                ", personne=" + person +
+                ", start_date=" + start_date +
+                ", end_date=" + end_date +
+                ", state=" + state +
+                ", person=" + person +
+                ", project=" + project +
                 '}';
     }
 }
