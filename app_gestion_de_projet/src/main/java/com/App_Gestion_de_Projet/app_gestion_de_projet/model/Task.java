@@ -12,6 +12,7 @@ public class Task {
     @Column(name ="name")
     private String name;
 
+    @Column(name ="description")
     private String description;
 
     @Column(name = "start_date")
@@ -20,6 +21,7 @@ public class Task {
     @Column(name = "end_date")
     private LocalDate end_date;
 
+    @Column(name = "state")
     private Boolean state;
 
     @ManyToOne
