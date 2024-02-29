@@ -18,7 +18,8 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
-    public void addProject(Project project) {
+
+    /*public void addProject(Project project) {
         projectRepository.save(project);
-    }
+    }*/
 }
