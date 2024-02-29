@@ -13,11 +13,13 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
+
     public List<Project> getAllProjects() {
         return projectRepository.findAll();
     }
 
-    public void addProject(Project project) {
+
+    /*public void addProject(Project project) {
         projectRepository.save(project);
-    }
+    }*/
 }
