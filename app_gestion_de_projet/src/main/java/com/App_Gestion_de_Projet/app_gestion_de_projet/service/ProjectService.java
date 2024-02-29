@@ -19,7 +19,7 @@ public class ProjectService {
     }
 
 
-    /*public void addProject(Project project) {
+    public void addProject(Project project) {
         projectRepository.save(project);
-    }*/
+    }
 }
