@@ -20,11 +20,14 @@ public class PersonService {
     }
 
 
+    @Transactional
     public void addPerson(Person person) {
         try {
             personRepository.save(person);
+            System.out.println("Personne ajoutée avec succès : " + person.toString());
         } catch (Exception e) {
-            System.out.println("addPerson ne fonctionne pas");
+            System.out.println("Erreur lors de l'ajout de la personne : " + e.getMessage());
+            e.printStackTrace();  // Affichez la trace complète de l'exception
         }
     }
 }
