@@ -1,44 +1,61 @@
 package com.App_Gestion_de_Projet.app_gestion_de_projet.controller;
 
+import com.App_Gestion_de_Projet.app_gestion_de_projet.Exception.RessourceNotFoundException;
+import com.App_Gestion_de_Projet.app_gestion_de_projet.model.Person;
 import com.App_Gestion_de_Projet.app_gestion_de_projet.model.Project;
 
+import com.App_Gestion_de_Projet.app_gestion_de_projet.repository.ProjectRepository;
 import com.App_Gestion_de_Projet.app_gestion_de_projet.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@CrossOrigin("*")
 @RestController
-@RequestMapping("/projets")
+@RequestMapping("/api/v1")
 public class ProjectController {
-
     @Autowired
     private ProjectService projectService;
-    @GetMapping
-    public List<Project> getAllProjects() {
-        return projectService.getAllProjects();
+    @Autowired
+    private ProjectRepository projectrepo;
+
+    public ProjectController(ProjectRepository projectrepo) {
+        this.projectrepo = projectrepo;
     }
 
-    @GetMapping("/init")
-    public void addProjects() {
+    @Autowired
+    public ProjectController(ProjectService projectService) {
+        this.projectService = projectService;
+    }
+    @GetMapping("/getAllproject")
+    public List<Project> getAllprojects() {
+        return projectService.getAllProject();
+    }
 
-        Project projet1 = new Project(1, "Project 1", "Description 1", LocalDate.now(), LocalDate.now().plusMonths(3));
-        Project projet2 = new Project(2, "Project 2", "Description 2", LocalDate.now().plusMonths(1), LocalDate.now().plusMonths(4));
-        Project projet3 = new Project(3, "Project 3", "Description 3", LocalDate.now().plusMonths(2), LocalDate.now().plusMonths(5));
-        Project projet4 = new Project(4, "Project 4", "Description 4", LocalDate.now().plusMonths(3), LocalDate.now().plusMonths(6));
-        Project projet5 = new Project(5, "Project 5", "Description 5", LocalDate.now().plusMonths(4), LocalDate.now().plusMonths(7));
-        Project projet6 = new Project(6, "Project 6", "Description 6", LocalDate.now().plusMonths(5), LocalDate.now().plusMonths(8));
+    @PostMapping("/postAddproject")
+    public Project addProjects(Project project) {
+        return projectService.addProject(project);
 
-        projectService.addProject(projet1);
-        projectService.addProject(projet2);
-        projectService.addProject(projet3);
-        projectService.addProject(projet4);
-        projectService.addProject(projet5);
-        projectService.addProject(projet6);
+    }
+    @DeleteMapping("/deletePerson/{id}")
+    public ResponseEntity<String> deletePerson(@PathVariable Long id) {
+        // Ensure that 'projectrepo' is initialized before using it
+        Project project = projectrepo.findById(id).orElse(null);
+
+        // Add logic for deleting the project
+
+        return ResponseEntity.ok("Deleted successfully");
     }
 
 }
+
+
+
+
+
+
+
