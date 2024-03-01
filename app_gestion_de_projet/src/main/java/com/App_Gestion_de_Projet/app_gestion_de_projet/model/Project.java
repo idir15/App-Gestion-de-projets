@@ -2,11 +2,13 @@ package com.App_Gestion_de_Projet.app_gestion_de_projet.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 public class Project {
     @Id
-    private int id;
+    //private UUID id;
+    private UUID id;
 
     @Column(name ="name")
     private String name;
@@ -20,22 +22,37 @@ public class Project {
     @Column(name = "end_date")
     private LocalDate end_date;
 
-    public Project() {
+
+    private Boolean state;
+
+
+
+
+    public Boolean getState() {
+        return state;
     }
-    public Project(int id, String name, String description, LocalDate start_date, LocalDate end_date) {
-        this.id = id;
+
+    public void setState(String state) {
+        this.state = Boolean.valueOf(state);
+    }
+
+    public Project(UUID uuid, String s, String string, LocalDate now, LocalDate localDate, boolean b) {
+    }
+    public Project(String name, String description, LocalDate start_date, LocalDate end_date, boolean state, Person person) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
         this.start_date = start_date;
         this.end_date = end_date;
+        this.state = state;
 
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -73,6 +90,7 @@ public class Project {
                 ", description='" + description + '\'' +
                 ", start_date=" + start_date +
                 ", end_date=" + end_date +
+                ", state='" + state + '\'' +
 
                 '}';
     }
