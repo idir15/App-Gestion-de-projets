@@ -2,15 +2,14 @@ package com.App_Gestion_de_Projet.app_gestion_de_projet.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
 public class Project {
     @Id
-    //private UUID id;
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    @Column(name ="name")
+    @Column(name = "name")
     private String name;
 
     @Column(name = "description")
@@ -22,37 +21,26 @@ public class Project {
     @Column(name = "end_date")
     private LocalDate end_date;
 
-
+    @Column(name = "state")
     private Boolean state;
 
-
-
-
-    public Boolean getState() {
-        return state;
+    public Project() {
     }
 
-    public void setState(String state) {
-        this.state = Boolean.valueOf(state);
-    }
-
-    public Project(UUID uuid, String s, String string, LocalDate now, LocalDate localDate, boolean b) {
-    }
-    public Project(String name, String description, LocalDate start_date, LocalDate end_date, boolean state, Person person) {
-        this.id = UUID.randomUUID();
+    public Project(long id, String name, String description, LocalDate start_date, LocalDate end_date, Boolean state) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.start_date = start_date;
         this.end_date = end_date;
         this.state = state;
-
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -64,23 +52,37 @@ public class Project {
         this.name = name;
     }
 
-    public LocalDate getStartDate() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getStart_date() {
         return start_date;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStart_date(LocalDate start_date) {
         this.start_date = start_date;
     }
 
-    public LocalDate getDateFin() {
+    public LocalDate getEnd_date() {
         return end_date;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEnd_date(LocalDate end_date) {
         this.end_date = end_date;
     }
 
+    public Boolean getState() {
+        return state;
+    }
 
+    public void setState(Boolean state) {
+        this.state = state;
+    }
 
     @Override
     public String toString() {
@@ -90,8 +92,7 @@ public class Project {
                 ", description='" + description + '\'' +
                 ", start_date=" + start_date +
                 ", end_date=" + end_date +
-                ", state='" + state + '\'' +
-
+                ", state=" + state +
                 '}';
     }
 }

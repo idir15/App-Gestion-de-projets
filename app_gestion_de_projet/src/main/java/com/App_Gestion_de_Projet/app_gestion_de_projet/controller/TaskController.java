@@ -36,7 +36,7 @@ public class TaskController {
     }
 
 
-    @PostMapping("/AddtTasks")
+    @PostMapping("/AddTasks")
     public Task saveTask(@RequestBody Task task) {
         return taskService.saveTask(task);
     }

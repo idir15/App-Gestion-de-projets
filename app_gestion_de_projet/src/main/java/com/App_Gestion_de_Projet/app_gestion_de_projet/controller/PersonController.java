@@ -36,7 +36,7 @@ public class PersonController {
     }
 
 
-    @DeleteMapping("/deletePerson/{id}")
+   /* @DeleteMapping("/deletePerson/{id}")
     public ResponseEntity<Map<String, Boolean>> deletecharge(@PathVariable Long id) {
         Person profil = profilrepo.findById(id)
                 .orElseThrow(() -> new RessourceNotFoundException("Profil n'éxiste pas selon le cod :" + id));
@@ -45,9 +45,9 @@ public class PersonController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
 
-    }
+    }*/
 
-    @PostMapping("/postUpdateperson")
+    /*@PostMapping("/postUpdateperson")
     public ResponseEntity<Person> updatecharge(@RequestBody Person profil) {
         Person pr = profilrepo.findById(profil.getId()).orElseThrow(
                 () -> new RessourceNotFoundException("Profil  n'éxiste pas selon le code :" + profil.getId()));
@@ -56,14 +56,14 @@ public class PersonController {
 
         return ResponseEntity.ok(updatedprofil);
 
-    }
+    }*/
 
-    @GetMapping("/getPersonbyId/{id}")
+    /*@GetMapping("/getPersonbyId/{id}")
     public ResponseEntity<Person> getchargebyId(@PathVariable Long id) {
         Person profil = profilrepo.findById(id)
                 .orElseThrow(() -> new RessourceNotFoundException("Profil n'éxiste pas selon le code  :" + id));
         return ResponseEntity.ok(profil);
 
-    }
+    }*/
 
 }
