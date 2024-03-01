@@ -20,12 +20,10 @@ import java.util.Map;
 public class ProjectController {
     @Autowired
     private ProjectService projectService;
-    @Autowired
-    private ProjectRepository projectrepo;
+    //@Autowired
+    //private ProjectRepository projectrepo;
 
-    public ProjectController(ProjectRepository projectrepo) {
-        this.projectrepo = projectrepo;
-    }
+
 
     @Autowired
     public ProjectController(ProjectService projectService) {
@@ -37,19 +35,20 @@ public class ProjectController {
     }
 
     @PostMapping("/postAddproject")
-    public Project addProjects(Project project) {
+    public Project addProjects(@RequestBody Project project) {
         return projectService.addProject(project);
 
     }
+    /*
     @DeleteMapping("/deletePerson/{id}")
     public ResponseEntity<String> deletePerson(@PathVariable Long id) {
         // Ensure that 'projectrepo' is initialized before using it
-        Project project = projectrepo.findById(id).orElse(null);
+        Project project = projectService.findById(id).orElse(null);
 
         // Add logic for deleting the project
 
         return ResponseEntity.ok("Deleted successfully");
-    }
+    }*/
 
 }
 
