@@ -1,7 +1,6 @@
 package com.App_Gestion_de_Projet.app_gestion_de_projet.service;
 
 import com.App_Gestion_de_Projet.app_gestion_de_projet.model.Project;
-
 import com.App_Gestion_de_Projet.app_gestion_de_projet.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

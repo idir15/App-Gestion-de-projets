@@ -37,14 +37,15 @@ public class Project {
 
     public Project() {
     }
-    public Project(long id, String name, String description, LocalDate startDate
-            , LocalDate endDate, Boolean state) {
+    public Project(long id, String name, String description, LocalDate startDate, LocalDate endDate, Boolean state) {
+
+
         this.id = id;
         this.name = name;
         this.description = description;
-        this.startDate
-                = startDate
-        ;
+        this.startDate = startDate
+;
+
         this.endDate = endDate;
         this.state = state;
 
@@ -75,16 +76,16 @@ public class Project {
     }
 
     public LocalDate getStartDate() {
-        return startDate
-                ;
+        return startDate;
     }
 
     public void setStartDate(LocalDate startDate
-    ) {
-        this.startDate
-                = startDate
-        ;
+) {
+        this.startDate = startDate;
+
     }
+
+
 
     public LocalDate getEndDate() {
         return endDate;
@@ -102,8 +103,7 @@ public class Project {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", startDate =" + startDate
-                +
+                ", startDate =" + startDate +
                 ", endDate=" + endDate +
                 ", state=" + state +
 
