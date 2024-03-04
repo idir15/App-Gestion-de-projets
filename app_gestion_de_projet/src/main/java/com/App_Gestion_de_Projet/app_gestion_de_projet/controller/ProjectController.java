@@ -34,14 +34,19 @@ public class ProjectController {
     }
 
     @DeleteMapping("/deleteProject/{id}")
-    public ResponseEntity<String> deletePersons(@PathVariable Long id) {
-        return projectService.deletePerson(id);
+    public ResponseEntity<String> deleteProject(@PathVariable Long id) {
+        return projectService.deleteProject(id);
 
     }
 
     @GetMapping("/getProject/{id}")
     public Optional<Project> getProjectById(@PathVariable Long id) {
         return projectService.getProjectById(id);
+    }
+
+    @PutMapping("/updateProject/{id}")
+    public ResponseEntity<String> updateProjectById(@PathVariable Long id, @RequestBody Project updatedProject) {
+        return projectService.updateProjectById(id, updatedProject);
     }
 }
 

@@ -30,7 +30,7 @@ public class ProjectService {
 
     }
 
-    public ResponseEntity<String> deletePerson(@PathVariable Long id) {
+    public ResponseEntity<String> deleteProject(@PathVariable Long id) {
 
         Project project = projectRepository.findById(id).orElse(null);
         if (project == null) {
@@ -46,4 +46,25 @@ public class ProjectService {
         return projectRepository.findById(id);
     }
 
+    public ResponseEntity<String> updateProjectById(Long id, Project updatedProject) {
+
+        Optional<Project> existingProjectOptional = projectRepository.findById(id);
+
+        if (existingProjectOptional.isPresent()) {
+
+            Project existingProject = existingProjectOptional.get();
+            existingProject.setName(updatedProject.getName());
+            existingProject.setDescription(updatedProject.getDescription());
+            existingProject.setState(updatedProject.getState());
+            existingProject.setStartDate(updatedProject.getStartDate());
+            existingProject.setEndDate(updatedProject.getEndDate());
+
+
+            projectRepository.save(existingProject);
+
+            return ResponseEntity.ok("Project updated successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Project not found");
+        }
+    }
 }
