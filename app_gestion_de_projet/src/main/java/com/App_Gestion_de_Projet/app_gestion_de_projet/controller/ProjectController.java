@@ -1,19 +1,15 @@
 
 package com.App_Gestion_de_Projet.app_gestion_de_projet.controller;
 
-import com.App_Gestion_de_Projet.app_gestion_de_projet.Exception.RessourceNotFoundException;
-import com.App_Gestion_de_Projet.app_gestion_de_projet.model.Person;
 import com.App_Gestion_de_Projet.app_gestion_de_projet.model.Project;
 
-import com.App_Gestion_de_Projet.app_gestion_de_projet.repository.ProjectRepository;
 import com.App_Gestion_de_Projet.app_gestion_de_projet.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
@@ -21,10 +17,6 @@ import java.util.Map;
 public class ProjectController {
     @Autowired
     private ProjectService projectService;
-    //@Autowired
-    //private ProjectRepository projectrepo;
-
-
 
     @Autowired
     public ProjectController(ProjectService projectService) {
@@ -40,17 +32,17 @@ public class ProjectController {
         return projectService.addProject(project);
 
     }
-    /*
-    @DeleteMapping("/deletePerson/{id}")
-    public ResponseEntity<String> deletePerson(@PathVariable Long id) {
-        // Ensure that 'projectrepo' is initialized before using it
-        Project project = projectService.findById(id).orElse(null);
 
-        // Add logic for deleting the project
+    @DeleteMapping("/deleteProject/{id}")
+    public ResponseEntity<String> deletePersons(@PathVariable Long id) {
+        return projectService.deletePerson(id);
 
-        return ResponseEntity.ok("Deleted successfully");
-    }*/
+    }
 
+    @GetMapping("/getProject/{id}")
+    public Optional<Project> getProjectById(@PathVariable Long id) {
+        return projectService.getProjectById(id);
+    }
 }
 
 
