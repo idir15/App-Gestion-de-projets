@@ -7,7 +7,8 @@ import java.util.UUID;
 @Entity
 public class Task {
     @Id
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column(name ="name")
     private String name;
@@ -24,25 +25,23 @@ public class Task {
     @Column(name = "state")
     private Boolean state;
 
-    @ManyToOne
-    @JoinColumn(name = "id_person")
-    private Person person;
+    public Task() {
+    }
 
-    public Task(String nom, String description, LocalDate dateDebut, LocalDate dateFin, String etat, Person person) {
-        this.id = UUID.randomUUID(); // Génération automatique d'un UUID lors de la création d'une nouvelle tâche
+    public Task(long id, String name, String description, LocalDate start_date, LocalDate end_date,  Boolean state) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.start_date = start_date;
         this.end_date = end_date;
         this.state = state;
-        this.person = person;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -66,7 +65,7 @@ public class Task {
         return start_date;
     }
 
-    public void setDateDebut(LocalDate start_date) {
+    public void setStart_date(LocalDate start_date) {
         this.start_date = start_date;
     }
 
@@ -82,28 +81,20 @@ public class Task {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = Boolean.valueOf(state);
+    public void setState(Boolean state) {
+        this.state = state;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 
     @Override
     public String toString() {
         return "Task{" +
                 "id=" + id +
-                ", nom='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", dateDebut=" + start_date +
-                ", dateFin=" + end_date +
-                ", etat='" + state + '\'' +
-                ", personne=" + person +
+                ", start_date=" + start_date +
+                ", end_date=" + end_date +
+                ", state=" + state +
                 '}';
     }
 }
