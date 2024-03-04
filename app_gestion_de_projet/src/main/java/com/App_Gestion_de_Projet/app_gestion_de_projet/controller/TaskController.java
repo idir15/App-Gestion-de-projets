@@ -40,6 +40,10 @@ public class TaskController {
     public Task saveTask(@RequestBody Task task) {
         return taskService.saveTask(task);
     }
+    @DeleteMapping("/deleteTask/{id}")
+    public void deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+    }
 
 
 }
