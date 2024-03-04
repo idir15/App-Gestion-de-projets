@@ -25,16 +25,27 @@ public class Task {
     @Column(name = "state")
     private Boolean state;
 
+
+    @ManyToOne
+    @JoinColumn(name = "id_person")
+    private Person person;
+
+    @ManyToOne
+    @JoinColumn(name = "id_project")
+    private Project project;
+
     public Task() {
     }
 
-    public Task(long id, String name, String description, LocalDate start_date, LocalDate end_date,  Boolean state) {
+    public Task(long id, String name, String description, LocalDate start_date, LocalDate end_date,  Boolean state, Person person, Project project) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.start_date = start_date;
         this.end_date = end_date;
         this.state = state;
+        this.person = person;
+        this.project = project;
     }
 
     public long getId() {
@@ -84,7 +95,21 @@ public class Task {
     public void setState(Boolean state) {
         this.state = state;
     }
+    public Person getPerson() {
+        return person;
+    }
 
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 
     @Override
     public String toString() {
@@ -95,6 +120,8 @@ public class Task {
                 ", start_date=" + start_date +
                 ", end_date=" + end_date +
                 ", state=" + state +
+                ", person=" + person +
+                ", project=" + project +
                 '}';
     }
 }
