@@ -18,10 +18,10 @@
 import Dashboard from "views/Dashboard.js";
 import UserProfile from "views/UserProfile.js";
 import TableList from "views/TableList.js";
-import Typography from "views/Typography.js";
+
 
 import Notifications from "views/Notifications.js";
-import Upgrade from "views/Upgrade.js";
+
 
 const dashboardRoutes = [
  
