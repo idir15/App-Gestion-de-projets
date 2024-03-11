@@ -1,8 +1,8 @@
 package com.App_Gestion_de_Projet.app_gestion_de_projet.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.UUID;
 
 @Entity
