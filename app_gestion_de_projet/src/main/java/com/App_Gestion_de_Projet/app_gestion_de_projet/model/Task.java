@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import static jakarta.persistence.CascadeType.MERGE;
+import static jakarta.persistence.CascadeType.PERSIST;
+
 @Entity
 public class Task {
     @Id
@@ -26,11 +29,11 @@ public class Task {
     private Boolean state;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = {PERSIST})
     @JoinColumn(name = "id_person")
     private Person person;
 
-    @ManyToOne
+    @ManyToOne(cascade = {PERSIST, MERGE})
     @JoinColumn(name = "id_project")
     private Project project;
 
