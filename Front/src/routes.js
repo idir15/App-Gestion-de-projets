@@ -18,6 +18,7 @@
 import Dashboard from "views/Dashboard.js";
 import UserProfile from "views/UserProfile.js";
 import TableList from "views/TableList.js";
+import Project from "views/Project.js"
 
 
 import Notifications from "views/Notifications.js";
@@ -41,9 +42,16 @@ const dashboardRoutes = [
   },
   {
     path: "/table",
-    name: "Projects",
+    name: "Table",
     icon: "nc-icon nc-notes",
     component: TableList,
+    layout: "/admin"
+  },
+  {
+    path: "/project",
+    name: "Project",
+    icon: "nc-icon nc-notes",
+    component: Project,
     layout: "/admin"
   },
   {
