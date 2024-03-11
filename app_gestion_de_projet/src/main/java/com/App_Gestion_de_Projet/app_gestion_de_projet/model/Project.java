@@ -5,6 +5,7 @@ import org.hibernate.annotations.IdGeneratorType;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Project {

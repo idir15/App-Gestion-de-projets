@@ -1,8 +1,10 @@
 package com.App_Gestion_de_Projet.app_gestion_de_projet.controller;
+import com.App_Gestion_de_Projet.app_gestion_de_projet.model.Person;
 import com.App_Gestion_de_Projet.app_gestion_de_projet.repository.TaskRepository;
 import com.App_Gestion_de_Projet.app_gestion_de_projet.Exception.RessourceNotFoundException;
 import com.App_Gestion_de_Projet.app_gestion_de_projet.model.Task;
 
+import com.App_Gestion_de_Projet.app_gestion_de_projet.service.PersonService;
 import com.App_Gestion_de_Projet.app_gestion_de_projet.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ public class TaskController {
 
     @Autowired
     private TaskService taskService;
+    private PersonService personService;
 
     @Autowired
     public TaskController(TaskService taskService) {

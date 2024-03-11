@@ -1,7 +1,6 @@
 package com.App_Gestion_de_Projet.app_gestion_de_projet.service;
 
 import com.App_Gestion_de_Projet.app_gestion_de_projet.model.Person;
-import com.App_Gestion_de_Projet.app_gestion_de_projet.model.Project;
 import com.App_Gestion_de_Projet.app_gestion_de_projet.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +23,7 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    @GetMapping("/getAllperson")
+    @GetMapping("/getAllperson"  )
     public List<Person> getAllperson() {
         return personRepository.findAll();
     }
@@ -49,6 +48,7 @@ public class PersonService {
     public Optional<Person> getPersonById(@PathVariable Long id){
         return personRepository.findById(id);
     }
+
 
     public ResponseEntity<String> updatePersonById(Long id, Person updatedPerson) {
 
