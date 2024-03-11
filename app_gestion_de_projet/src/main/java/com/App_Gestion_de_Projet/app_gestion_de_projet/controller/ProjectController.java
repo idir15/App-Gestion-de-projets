@@ -41,7 +41,6 @@ public class ProjectController {
     @DeleteMapping("/deleteProject/{id}")
     public ResponseEntity<String> deleteProject(@PathVariable Long id) {
         return projectService.deleteProject(id);
-
     }
 
     @GetMapping("/getProject/{id}")
